@@ -92,7 +92,7 @@ You can customize the evaluation by modifying the following variables in the scr
 
 - `MODEL_NAME`: The name of the model from HuggingFace Model Hub
 - `EVAL_OUTPUT_PATH`: The directory to store evaluation results
-- `shots`: An array of few-shot settings to evaluate (default: 0, 1, 5)
+- `--num_fewshot`: The number of few-shot examples given to model for evaluation
 
 ## Supported Languages
 - Bengali
@@ -118,7 +118,8 @@ lm_eval --model hf \
     --batch_size auto:40 \  
     --log_samples \
     --output_path $EVAL_OUTPUT_PATH \
-    --max_batch_size 64
+    --max_batch_size 64 \
+    ---num_fewshot 5
 ```
 
 ## vLLM Evaluation

@@ -151,26 +151,9 @@ The dataset includes a separate validation set of 9,157 samples that can be used
 
 
 
-## Evaluation
-
-We evaluated 45 different LLMs on MILU, including:
-
-- Closed proprietary models (e.g., GPT-4o, Gemini-1.5)
-- Open-source multilingual models
-- Language-specific fine-tuned models
-
-Key findings:
-
-- GPT-4o achieved the highest average accuracy at 72%
-- Open multilingual models outperformed language-specific fine-tuned models
-- Models performed better in high-resource languages compared to low-resource ones
-- Performance was lower in culturally relevant areas (e.g., Arts & Humanities) compared to general fields like STEM
-
-For detailed results and analysis, please refer to our [paper](https://arxiv.org/abs/2411.02538).
-
 ## Citation
 
-If you use MILU in your research, please cite our paper:
+If you use MILU in your work, please cite us:
 
 ```bibtex
 @article{verma2024milu,

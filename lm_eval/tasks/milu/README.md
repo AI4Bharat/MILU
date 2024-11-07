@@ -1,74 +1,34 @@
-# Task-name
+# MILU
 
 ### Paper
 
-Title: `paper titles goes here`
+Title: `MILU: A Multi-task Indic Language Understanding Benchmark`
 
-Abstract: `link to paper PDF or arXiv abstract goes here`
-
-`Short description of paper / benchmark goes here:`
-
-Homepage: `homepage to the benchmark's website goes here, if applicable`
+Abstract: `Evaluating Large Language Models (LLMs) in low-resource and linguistically diverse languages remains a significant challenge in NLP, particularly for languages using non-Latin scripts like those spoken in India. Existing benchmarks predominantly focus on English, leaving substantial gaps in assessing LLM capabilities in these languages. We introduce MILU, a Multi task Indic Language Understanding Benchmark, a comprehensive evaluation benchmark designed to address this gap. MILU spans 8 domains and 42 subjects across 11 Indic languages, reflecting both general and culturally specific knowledge. With an India-centric design, incorporates material from regional and state-level examinations, covering topics such as local history, arts, festivals, and laws, alongside standard subjects like science and mathematics. We evaluate over 42 LLMs, and find that current LLMs struggle with MILU, with GPT-4o achieving the highest average accuracy at 72 percent. Open multilingual models outperform language-specific fine-tuned models, which perform only slightly better than random baselines. Models also perform better in high resource languages as compared to low resource ones. Domain-wise analysis indicates that models perform poorly in culturally relevant areas like Arts and Humanities, Law and Governance compared to general fields like STEM. To the best of our knowledge, MILU is the first of its kind benchmark focused on Indic languages, serving as a crucial step towards comprehensive cultural evaluation. All code, benchmarks, and artifacts will be made publicly available to foster open research.`
 
 
 ### Citation
 
+```bibtex
+@article{verma2024milu,
+  title   = {MILU: A Multi-task Indic Language Understanding Benchmark},
+  author  = {Sshubam Verma and Mohammed Safi Ur Rahman Khan and Vishwajeet Kumar and Rudra Murthy and Jaydeep Sen},
+  year    = {2024},
+  journal = {arXiv preprint arXiv: 2411.02538}
+}
 ```
-BibTeX-formatted citation goes here
-```
-
-### Groups, Tags, and Tasks
-
-#### Groups
-
-* `group_name`: `Short description`
-
-#### Tags
-
-* `tag_name`: `Short description`
-
-#### Tasks
-
-* `task_name`: `1-sentence description of what this particular task does`
-* `task_name2`: ...
-
-### Checklist
-
-For adding novel benchmarks/datasets to the library:
-* [ ] Is the task an existing benchmark in the literature?
-  * [ ] Have you referenced the original paper that introduced the task?
-  * [ ] If yes, does the original paper provide a reference implementation? If so, have you checked against the reference implementation and documented how to run such a test?
 
 
-If other tasks on this dataset are already supported:
-* [ ] Is the "Main" variant of this task clearly denoted?
-* [ ] Have you provided a short sentence in a README on what each new variant adds / evaluates?
-* [ ] Have you noted which, if any, published evaluation setups are matched by this variant?
 
 
-# How to run
----
-
-### MILU Evaluation Script
-
-This repository contains a script for evaluating language models on the Indic Massive Multitask Language Understanding (MILU) benchmark using the `lm-eval-harness` framework.
-
-#### Features
-
-- Supports evaluation of HuggingFace and vLLM models
-- Configurable number of few-shot examples (0, 1, 5)
-- Automatic batch size selection
-- Logging of samples and outputs
-- Multi-GPU support
+## Usage
 
 ##### Prerequisites
 
 - Python 3.7+
 - `lm-eval-harness` library
 - HuggingFace Transformers
-- vLLM (optional, for faster inference)
-
-## Usage
+- vLLM (optional, for faster inference)\
 
 1. Clone this repository:
 
@@ -78,21 +38,15 @@ cd MILU
 pip install -e .
 ```
 
-2. Set up your environment variables:
+2. Request access to the HuggingFace 🤗 dataset [here](https://huggingface.co/datasets/ai4bharat/MILU).
+
+3. Set up your environment variables:
 
 ```bash
 export HF_HOME=/path/to/HF_CACHE/if/needed
 export HF_TOKEN=YOUR_HUGGINGFACE_TOKEN
 ```
 
-
-## Configuration
-
-You can customize the evaluation by modifying the following variables in the script:
-
-- `MODEL_NAME`: The name of the model from HuggingFace Model Hub
-- `EVAL_OUTPUT_PATH`: The directory to store evaluation results
-- `--num_fewshot`: The number of few-shot examples given to model for evaluation
 
 ## Supported Languages
 - Bengali
@@ -109,17 +63,18 @@ You can customize the evaluation by modifying the following variables in the scr
 
 ## HuggingFace Evaluation
 
-For HuggingFace models, the script uses the following command:
+For HuggingFace models, you may use the following sample command:
 
 ```bash
 lm_eval --model hf \
-    --model_args 'pretrained=$MODEL_NAME,temperature=0.0,top_p=1.0,parallelize=True' \
+    --model_args 'pretrained=google/gemma-2-27b-it,temperature=0.0,top_p=1.0,parallelize=True' \
     --tasks milu \
     --batch_size auto:40 \  
     --log_samples \
     --output_path $EVAL_OUTPUT_PATH \
     --max_batch_size 64 \
-    ---num_fewshot 5
+    --num_fewshot 5 \
+    --apply_chat_template
 ```
 
 ## vLLM Evaluation
@@ -146,9 +101,10 @@ To evaluate your on a specific language, modify the `--tasks` parameter:
 
 Replace `English` with the available language (e.g., Odia, Hindi, etc.).
 
-## Tips & Observations
+### Evaluation Tips & Observations
 
-1. vLLM generally works better with Llama models, while Gemma models work better with HuggingFace.
-2. If vLLM encounters out-of-memory errors, switch to HuggingFace.
-3. For HuggingFace, use `--batch_size=auto:<n_batch_resize_tries>` to re-select the batch size multiple times.
-4. When using vLLM, pass generation kwargs in the `--gen_kwargs` flag. For HuggingFace, include them in `model_args`.
+1. Make sure to use `--apply_chat_template` for Instruction-fine-tuned models, to format the prompt correctly.
+2. vLLM generally works better with Llama models, while Gemma models work better with HuggingFace.
+3. If vLLM encounters out-of-memory errors, try reducing `max_gpu_utilization` else switch to HuggingFace.
+4. For HuggingFace, use `--batch_size=auto:<n_batch_resize_tries>` to re-select the batch size multiple times.
+5. When using vLLM, pass generation kwargs in the `--gen_kwargs` flag. For HuggingFace, include them in `model_args`.

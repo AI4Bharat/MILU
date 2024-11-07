@@ -1,7 +1,7 @@
 # MILU: A Multi-task Indic Language Understanding Benchmark
 
 
-[![ArXiv](https://img.shields.io/badge/arXiv-2411.02538-b31b1b.svg)](https://arxiv.org/abs/2411.02538)     [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-yellow)](https://huggingface.co/datasets/ai4bharat/MILU) [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![ArXiv](https://img.shields.io/badge/arXiv-2411.02538-b31b1b.svg)](https://arxiv.org/abs/2411.02538)     [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-yellow)](https://huggingface.co/datasets/ai4bharat/MILU) [![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 ## Overview
 

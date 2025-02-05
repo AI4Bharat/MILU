@@ -5,7 +5,7 @@
 
 ## Overview
 
-MILU (Multi-task Indic Language Understanding Benchmark) is a comprehensive evaluation dataset designed to assess the performance of Large Language Models (LLMs) across 11 Indic languages. It spans 8 domains and 42 subjects, reflecting both general and culturally specific knowledge from India.
+MILU (Multi-task Indic Language Understanding Benchmark) is a comprehensive evaluation dataset designed to assess the performance of Large Language Models (LLMs) across 11 Indic languages. It spans 8 domains and 41 subjects, reflecting both general and culturally specific knowledge from India.
 
 This repository contains code for evaluating language models on the MILU benchmark using the [lm-eval-harness](https://github.com/EleutherAI/lm-evaluation-harness) framework.
 
@@ -103,26 +103,26 @@ Replace `English` with the available language (e.g., Odia, Hindi, etc.).
 
 - **11 Indian Languages**: Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil, Telugu, and English
 - **Domains**: 8 diverse domains including Arts & Humanities, Social Sciences, STEM, and more
-- **Subjects**: 42 subjects covering a wide range of topics
-- **Questions**: ~85,000 multiple-choice questions
+- **Subjects**: 41 subjects covering a wide range of topics
+- **Questions**: ~80,000 multiple-choice questions
 - **Cultural Relevance**: Incorporates India-specific knowledge from regional and state-level examinations
 
 ## Dataset Statistics
 
-| Language | Total Questions | Translated Questions | Avg Words Per Question |
-|----------|-----------------|----------------------|------------------------|
-| Bengali  | 7138            | 1601                 | 15.72                  |
-| Gujarati | 5327            | 2755                 | 16.69                  |
-| Hindi    | 15450           | 115                  | 20.63                  |
-| Kannada  | 6734            | 1522                 | 12.83                  |
-| Malayalam| 4670            | 1534                 | 12.82                  |
-| Marathi  | 7424            | 1235                 | 18.8                   |
-| Odia     | 5025            | 1452                 | 15.63                  |
-| Punjabi  | 4363            | 2341                 | 19.9                   |
-| Tamil    | 7059            | 1524                 | 13.32                  |
-| Telugu   | 7847            | 1298                 | 16.13                  |
-| English  | 14036           | -                    | 22.01                  |
-| **Total**| **85073**       | **15377**            | **16.77** (avg)        |
+| Language   | Total Questions | Translated Questions | Avg Words Per Question |
+|------------|----------------|----------------------|------------------------|
+| Bengali    | 6638           | 1601                 | 15.12                  |
+| Gujarati   | 4827           | 2755                 | 16.12                  |
+| Hindi      | 14837          | 115                  | 20.61                  |
+| Kannada    | 6234           | 1522                 | 12.42                  |
+| Malayalam  | 4321           | 3354                 | 12.39                  |
+| Marathi    | 6924           | 1235                 | 18.76                  |
+| Odia       | 4525           | 3100                 | 14.96                  |
+| Punjabi    | 4099           | 3411                 | 19.26                  |
+| Tamil      | 6372           | 1524                 | 13.14                  |
+| Telugu     | 7304           | 1298                 | 15.71                  |
+| English    | 13536          | -                    | 22.07                  |
+| **Total**  | **79617**      | **19915**            | **16.41** (avg)        |
 
 
 
@@ -132,7 +132,7 @@ Replace `English` with the available language (e.g., Odia, Hindi, etc.).
 The test set consists of the MILU (Multi-task Indic Language Understanding) benchmark, which contains approximately 85,000 multiple-choice questions across 11 Indic languages.
 
 ### Validation Set
-The dataset includes a separate validation set of 9,157 samples that can be used for few-shot examples during evaluation. This validation set was created by sampling questions from each of the 42 subjects.
+The dataset includes a separate validation set of 8,933 samples that can be used for few-shot examples during evaluation. This validation set was created by sampling questions from each of the 41 subjects.
 
 ### Subjects spanning MILU
 
@@ -145,7 +145,7 @@ The dataset includes a separate validation set of 9,157 samples that can be used
 | Environmental Sciences | Agriculture, Earth Sciences, Environmental Science, Geography |
 | Health & Medicine | Food Science, Health and Medicine |
 | Law & Governance | Defense and Security, Ethics and Human Rights, Law and Ethics, Politics and Governance |
-| Math and Sciences | Astronomy and Astrophysics, Biology, Chemistry, Computer Science, Logical Reasoning, Mathematics, Physics |
+| Math and Sciences | Astronomy and Astrophysics, Biology, Chemistry, Computer Science, Logical Reasoning, Physics |
 | Social Sciences | Anthropology, International Relations, Psychology, Public Administration, Social Welfare and Development, Sociology, Sports and Recreation |
 
 
